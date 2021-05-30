@@ -5,7 +5,7 @@ import {
   SessionController,
   StudentController,
   PlanController,
-  EnrollmentsController,
+  EnrollmentController,
 } from './app/controllers';
 
 // validators
@@ -38,10 +38,10 @@ routes.delete('/plans/:id', planValidator.delete, PlanController.delete);
 
 // enrollments
 
-routes.get('/enrollments', EnrollmentsController.index);
-routes.post('/enrollments', EnrollmentsController.store);
-routes.put('/enrollments/:id', EnrollmentsController.update);
-routes.delete('/enrollments/:id', EnrollmentsController.delete);
+routes.get('/enrollments', EnrollmentController.index);
+routes.post('/enrollments', EnrollmentController.store);
+routes.put('/enrollments/:id', EnrollmentController.update);
+routes.delete('/enrollments/:id', EnrollmentController.delete);
 
 // teste
 routes.get('/test', (req, res) => {

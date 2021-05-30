@@ -4,6 +4,14 @@ class Enrollment extends Model {
   static init(sequelize) {
     super.init(
       {
+        student_id: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+        },
+        plan_id: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+        },
         start_date: {
           type: Sequelize.DATE, // pelo usuario
           allowNull: false,

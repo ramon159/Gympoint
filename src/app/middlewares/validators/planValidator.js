@@ -8,6 +8,7 @@ export default {
   async store(req, res, next) {
     return next();
   },
+
   async update(req, res, next) {
     const { id } = req.params;
 
@@ -17,6 +18,7 @@ export default {
 
     return next();
   },
+
   async delete(req, res, next) {
     const { id } = req.params;
 

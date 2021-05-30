@@ -1,4 +1,4 @@
-import Student from '../models/Student';
+import { Student } from '../models';
 
 export default {
   async index(req, res) {

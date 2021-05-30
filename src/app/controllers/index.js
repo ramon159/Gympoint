@@ -1,11 +1,11 @@
 import SessionController from './SessionController';
 import StudentController from './StudentController';
 import PlanController from './PlanController';
-import EnrollmentsController from './EnrollmentsController';
+import EnrollmentController from './EnrollmentController';
 
 export {
   SessionController,
   StudentController,
   PlanController,
-  EnrollmentsController,
+  EnrollmentController,
 };

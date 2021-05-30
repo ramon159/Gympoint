@@ -1,4 +1,4 @@
-import Plan from '../models/Plan';
+import { Plan } from '../models';
 
 export default {
   async index(req, res) {
