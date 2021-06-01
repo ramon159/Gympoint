@@ -59,8 +59,8 @@ export default {
     if (!plan) {
       return res.status(404).json({ message: 'plan id not exists' });
     }
-    const deletedPlan = await plan.destroy();
+    await plan.destroy();
 
-    return res.json(deletedPlan);
+    return res.json(plan);
   },
 };
