@@ -147,6 +147,14 @@ export default {
 
   async delete(req, res) {
     const { id } = req.params;
-    return res.json(id);
+    const enrollment = await Enrollment.findByPk(id);
+
+    if (!enrollment) {
+      return res.status(404).json({ error: 'enrollment id not found' });
+    }
+
+    await enrollment.destroy();
+
+    return res.json({ message: enrollment.dataValues });
   },
 };
