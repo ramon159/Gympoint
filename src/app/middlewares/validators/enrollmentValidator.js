@@ -25,13 +25,14 @@ export default {
   },
   async update(req, res, next) {
     const schema = yup.object().shape({
+      id: yup.number().positive().integer().required(),
       student_id: yup.number().positive().integer().strict(),
       plan_id: yup.number().positive().integer().strict(),
       start_date: yup.date(),
     });
 
     await schema
-      .validate(req.body)
+      .validate({ ...req.params, ...req.body })
       .then(() => next())
       .catch((err) => res.json({ [err.name]: err.message }));
   },
