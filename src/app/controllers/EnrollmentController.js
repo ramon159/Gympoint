@@ -88,6 +88,9 @@ export default {
     const formattedStartDate = parseISO(start_date);
 
     const enrollment = await Enrollment.findByPk(id);
+    if (!enrollment) {
+      return res.status(401).json({ error: 'enrollment id not found' });
+    }
 
     if (start_date !== enrollment.start_date) {
       if (isBefore(formattedStartDate, new Date())) {
