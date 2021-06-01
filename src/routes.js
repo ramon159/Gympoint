@@ -40,7 +40,7 @@ routes.get('/plans', PlanController.index);
 routes.post('/plans', planValidator.store, PlanController.store);
 
 routes.put('/plans/:id', planValidator.update, PlanController.update);
-routes.delete('/plans/:id', planValidator.delete, PlanController.delete);
+routes.delete('/plans/:id', planValidator.destroy, PlanController.destroy);
 
 // enrollments
 
@@ -61,8 +61,8 @@ routes.put(
 );
 routes.delete(
   '/enrollments/:id',
-  enrollmentValidator.delete,
-  EnrollmentController.delete
+  enrollmentValidator.destroy,
+  EnrollmentController.destroy
 );
 
 // teste

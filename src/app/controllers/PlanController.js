@@ -52,7 +52,7 @@ export default {
 
     return res.json(newPlan);
   },
-  async delete(req, res) {
+  async destroy(req, res) {
     const { id } = req.params;
 
     const plan = await Plan.findByPk(id);

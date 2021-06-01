@@ -27,7 +27,7 @@ export default {
       .then(() => next())
       .catch((err) => res.json({ [err.name]: err.message }));
   },
-  async delete(req, res, next) {
+  async destroy(req, res, next) {
     const schema = yup.object().shape({
       id: yup.number().positive().integer().required(),
     });

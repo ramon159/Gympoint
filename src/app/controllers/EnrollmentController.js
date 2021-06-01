@@ -148,7 +148,7 @@ export default {
     return res.json(newEnrollment);
   },
 
-  async delete(req, res) {
+  async destroy(req, res) {
     const { id } = req.params;
     const enrollment = await Enrollment.findByPk(id);
 
