@@ -13,6 +13,7 @@ import {
   sessionValidator,
   studentValidator,
   planValidator,
+  enrollmentValidator,
 } from './app/middlewares/validators';
 
 import authMiddleware from './app/middlewares/auth';
@@ -38,10 +39,26 @@ routes.delete('/plans/:id', planValidator.delete, PlanController.delete);
 
 // enrollments
 
-routes.get('/enrollments', EnrollmentController.index);
-routes.post('/enrollments', EnrollmentController.store);
-routes.put('/enrollments/:id', EnrollmentController.update);
-routes.delete('/enrollments/:id', EnrollmentController.delete);
+routes.get(
+  '/enrollments',
+  enrollmentValidator.index,
+  EnrollmentController.index
+);
+routes.post(
+  '/enrollments',
+  enrollmentValidator.store,
+  EnrollmentController.store
+);
+routes.put(
+  '/enrollments/:id',
+  enrollmentValidator.update,
+  EnrollmentController.update
+);
+routes.delete(
+  '/enrollments/:id',
+  enrollmentValidator.delete,
+  EnrollmentController.delete
+);
 
 // teste
 routes.get('/test', (req, res) => {
