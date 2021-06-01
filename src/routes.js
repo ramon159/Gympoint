@@ -6,6 +6,7 @@ import {
   StudentController,
   PlanController,
   EnrollmentController,
+  CheckinController,
 } from './app/controllers';
 
 // validators
@@ -21,6 +22,10 @@ import authMiddleware from './app/middlewares/auth';
 const routes = new Router();
 
 routes.post('/login', sessionValidator.store, SessionController.store);
+
+// checkins
+routes.post('/students/:id/checkins', CheckinController.store);
+routes.get('/students/:id/checkins', CheckinController.show);
 
 // requires auth
 routes.use(authMiddleware);

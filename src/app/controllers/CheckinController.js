@@ -1,8 +1,8 @@
 export default {
   async show(req, res) {
-    return res.json();
+    return res.json('show');
   },
   async store(req, res) {
-    return res.json();
+    return res.json('store');
   },
 };
