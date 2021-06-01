@@ -1,9 +1,5 @@
 import * as yup from 'yup';
 
-const stringIsInteger = (value) =>
-  // eslint-disable-next-line no-restricted-globals
-  !isNaN(value) && Number.isInteger(Number(value)); // use regex?
-
 export default {
   async store(req, res, next) {
     const schema = yup.object().shape({
@@ -13,14 +9,15 @@ export default {
       weight: yup.number().required(),
       height: yup.number().required(),
     });
-    if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'validations fails' });
-    }
-    return next();
+
+    await schema
+      .validate(req.body)
+      .then(() => next())
+      .catch((err) => res.json({ [err.name]: err.message }));
   },
   async update(req, res, next) {
-    const { id } = req.params;
     const schema = yup.object().shape({
+      id: yup.number().positive().integer().required(),
       name: yup.string(),
       email: yup.string().email(),
       age: yup.number(),
@@ -28,14 +25,9 @@ export default {
       height: yup.number(),
     });
 
-    if (!stringIsInteger(id)) {
-      return res.status(400).json({ error: 'id param must be a integer' });
-    }
-
-    if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'validations fails' });
-    }
-
-    return next();
+    await schema
+      .validate({ ...req.params, ...req.body })
+      .then(() => next())
+      .catch((err) => res.json({ [err.name]: err.message }));
   },
 };
