@@ -1,6 +1,11 @@
+import * as yup from 'yup';
+
 const stringIsInteger = (value) =>
   // eslint-disable-next-line no-restricted-globals
   !isNaN(value) && Number.isInteger(Number(value)); // use regex?
+
+const validationsFails = (res) =>
+  res.status(400).json({ error: 'validations fails' });
 
 export default {
   index(req, res, next) {
@@ -12,12 +17,17 @@ export default {
     return next();
   },
   store(req, res, next) {
-    return res.json();
+    const schema = yup.object().shape({
+      student_id: yup.integer().required(),
+      plan_id: yup.integer().required(),
+      start_date: yup.date().required(),
+    });
+    return next();
   },
   update(req, res, next) {
-    return res.json();
+    return next();
   },
   delete(req, res, next) {
-    return res.json();
+    return next();
   },
 };
