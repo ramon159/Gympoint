@@ -19,7 +19,7 @@ export default {
       id: yup.number().positive().integer().required(),
       title: yup.string(),
       duration: yup.number().positive().integer().strict(),
-      price: yup.number().positive().strict(),
+      price: yup.number().positive().strict(), // strict not allow numeric strings
     });
 
     await schema
