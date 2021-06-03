@@ -15,6 +15,7 @@ import {
   studentValidator,
   planValidator,
   enrollmentValidator,
+  checkinValidator,
 } from './app/middlewares/validators';
 
 import authMiddleware from './app/middlewares/auth';
@@ -24,8 +25,16 @@ const routes = new Router();
 routes.post('/login', sessionValidator.store, SessionController.store);
 
 // checkins
-routes.post('/students/:id/checkins', CheckinController.store);
-routes.get('/students/:id/checkins', CheckinController.show);
+routes.post(
+  '/students/:id/checkins',
+  checkinValidator.store,
+  CheckinController.store
+);
+routes.get(
+  '/students/:id/checkins',
+  checkinValidator.show,
+  CheckinController.show
+);
 
 // requires auth
 routes.use(authMiddleware);
@@ -64,10 +73,5 @@ routes.delete(
   enrollmentValidator.destroy,
   EnrollmentController.destroy
 );
-
-// teste
-routes.get('/test', (req, res) => {
-  res.json(req.token);
-});
 
 export default routes;
