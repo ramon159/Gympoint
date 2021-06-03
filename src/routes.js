@@ -7,6 +7,7 @@ import {
   PlanController,
   EnrollmentController,
   CheckinController,
+  HelpOrderController,
 } from './app/controllers';
 
 // validators
@@ -16,6 +17,7 @@ import {
   planValidator,
   enrollmentValidator,
   checkinValidator,
+  helpOrderValidator,
 } from './app/middlewares/validators';
 
 import authMiddleware from './app/middlewares/auth';
@@ -35,6 +37,21 @@ routes.get(
   checkinValidator.show,
   CheckinController.show
 );
+
+// help order
+routes.post(
+  '/students/:id/help-orders',
+  helpOrderValidator.store,
+  HelpOrderController.store
+);
+
+routes.get(
+  '/students/:id/help-orders',
+  helpOrderValidator.show,
+  HelpOrderController.show
+);
+
+routes.get('/students/help-orders', HelpOrderController.index);
 
 // requires auth
 routes.use(authMiddleware);
