@@ -4,6 +4,7 @@ import PlanController from './PlanController';
 import EnrollmentController from './EnrollmentController';
 import CheckinController from './CheckinController';
 import HelpOrderController from './HelpOrderController';
+import AnswerController from './AnswerController';
 
 export {
   SessionController,
@@ -12,4 +13,5 @@ export {
   EnrollmentController,
   CheckinController,
   HelpOrderController,
+  AnswerController,
 };

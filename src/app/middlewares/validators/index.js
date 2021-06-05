@@ -4,6 +4,7 @@ import planValidator from './planValidator';
 import enrollmentValidator from './enrollmentValidator';
 import checkinValidator from './checkinValidator';
 import helpOrderValidator from './helpOrderValidator';
+import answerValidator from './answerValidator';
 
 export {
   sessionValidator,
@@ -12,4 +13,5 @@ export {
   enrollmentValidator,
   checkinValidator,
   helpOrderValidator,
+  answerValidator,
 };

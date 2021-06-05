@@ -8,6 +8,7 @@ import {
   EnrollmentController,
   CheckinController,
   HelpOrderController,
+  AnswerController,
 } from './app/controllers';
 
 // validators
@@ -18,6 +19,7 @@ import {
   enrollmentValidator,
   checkinValidator,
   helpOrderValidator,
+  answerValidator,
 } from './app/middlewares/validators';
 
 import authMiddleware from './app/middlewares/auth';
@@ -51,10 +53,17 @@ routes.get(
   HelpOrderController.show
 );
 
-routes.get('/students/help-orders', HelpOrderController.index);
+routes.get('/help-orders', helpOrderValidator.index, HelpOrderController.index);
 
 // requires auth
 routes.use(authMiddleware);
+
+// answer
+routes.post(
+  '/help-orders/:id/answer',
+  answerValidator.store,
+  AnswerController.store
+);
 
 // students
 routes.get('/students', StudentController.index);
